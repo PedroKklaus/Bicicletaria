@@ -41,7 +41,7 @@
     width: 30px;
     height: 4px;
     border-radius: 3px;
-    background: rgba(2, 114, 35, 0.658);
+    background: #2e7d32d8;
     position: absolute;
     bottom: -12px;
     left: 50%;
@@ -76,7 +76,7 @@ form p{
 
 form p a{
     text-decoration: none;
-    color: rgba(2, 114, 35, 0.658);
+    color: #2e7d32d8;
 }
 
 .btn-field {
@@ -87,7 +87,7 @@ form p a{
 
 .btn-field button{
     flex-basis: 48%;
-    background-color: rgba(2, 114, 35, 0.658);
+    background-color: #2e7d32d8;
     color: #fff;
     height: 40px;
     border-radius: 20px;
@@ -100,7 +100,7 @@ form p a{
 }
 
 button:hover{
-    background-color: rgba(2, 114, 35, 0.658);
+    background-color: #2e7d32d8;
 }
 
 button a {

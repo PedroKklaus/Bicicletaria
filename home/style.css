@@ -13,12 +13,102 @@ body{
 
 main {
     padding: 20px;
-    margin-left: 40px;
-    position:fixed;
-
+    margin-left: 0px;
     z-index: 1;
     padding-left: calc(82px + 20px);
 }
+
+.card .fa-box{
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.877);
+}
+
+.card .fa-list{
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.815);
+}
+
+.card  .fa-toolbox{
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.877);
+}
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  color: #0a0a0a;
+  margin-left: 150px;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  gap: 20px;
+  margin: 20px 0;
+  margin-top: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.card:first-child {
+    background-color: #2e7d32d8;
+}
+
+.card:nth-child(2) {
+  background-color: #2e7d32d8;
+}
+
+.card:nth-child(3) {
+  background-color: #2e7d32d8;
+}
+
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.charts-card {
+  background-color: #0700000c;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#title-chart {
+    margin-bottom: 70px;
+}
+
 
 #sidebar {
     display: flex;
@@ -28,9 +118,10 @@ main {
     height: 100vh;
     position: fixed;
     right: 0; 
-    left: auto;
-
-    border-radius: 0px 18px 18px 0px;
+    left: auto; 
+    margin-right: 8px; 
+   
+    border-radius: 18px 0px 0px 18px;
     transition: all .5s;
     min-width: 82px;
     z-index: 2;
@@ -49,7 +140,7 @@ main {
 }
 
 .side-item.active{
-    background-color: rgba(2, 114, 35, 0.658);
+    background-color: #2e7d32d8;
 }
 
 .side-item{
@@ -134,9 +225,9 @@ main {
 }
 #open-btn {
     position: absolute;
-    top: 30px;
-    right: -15px;
-    background-color: rgba(0, 0, 255, 0.692);
+    top: 70px;
+    right: 80px;
+    background-color: #2e7d32d8;
     border-radius: 100%;
     width: 20px;
     height: 20px;
@@ -181,3 +272,23 @@ main {
     justify-content: flex-start;
     gap: 14px;
 }
+
+
+@media screen and (min-width: 1920px) {
+    .charts-card {
+      width: 850px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main-cards {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+  
+    .charts {
+      grid-template-columns: 1fr;
+      margin-top: 30px;
+    }
+  }
