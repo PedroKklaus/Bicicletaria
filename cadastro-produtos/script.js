@@ -4,14 +4,14 @@ document.getElementById('open-btn').addEventListener('click', function(){
 
 
 function addProduct (event){
-    let category = document.getElementById('category').value;
-    let description = document.getElementById('description').value;
-    let manufacturer = document.getElementById('manufacturer').value;
-    let sellprice = document.getElementById('sellprice').value;
-    let price = document.getElementById('price').value;
-    let productimage = document.getElementById('productimage').files[0];
+    let categoria = document.getElementById('categoria').value;
+    let descricao = document.getElementById('descricacao').value;
+    let fabricante = document.getElementById('fabricante').value;
+    let precovenda = document.getElementById('precovenda').value;
+    let preco = document.getElementById('preco').value;
+    let Imgproduto = document.getElementById('Imgproduto').files[0];
 
-    if (!category || !description || !manufacturer || !sellprice || !price || !productimage) {
+    if (!categoria || !descricao || !fabricante || !precovenda || !preco || !Imgproduto) {
       event.preventDefault();
       alert('Campos obrigatórios não preenchidos'); 
   }else {
@@ -19,7 +19,7 @@ function addProduct (event){
   
     let reader = new FileReader();
       reader.onloadend = function() {
-      let product = {category, description, manufacturer, sellprice, price, image: reader.result};
+      let product = {categoria, descricao, fabricante, precovenda, preco, image: reader.result};
     
       let products = JSON.parse(localStorage.getItem('products')) || [];
       products.push(product);
@@ -27,7 +27,7 @@ function addProduct (event){
       localStorage.setItem('products', JSON.stringify(products));
     
       }
-      reader.readAsDataURL(productimage);
+      reader.readAsDataURL(Imgproduto);
       
       console.log (products);
     }
