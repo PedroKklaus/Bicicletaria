@@ -6,20 +6,21 @@
 }
 
 body {
-    background-color: rgba(128, 128, 128, 0.021);
+    background-color: #e7dddd;
+
 }
 
 main {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinha horizontalmente ao centro */
-    justify-content: center; /* Alinha verticalmente ao centro */
-    min-height: 100vh; /* Altura mínima para que a verticalidade tenha efeito */
-    margin-left: 0; /* Remove a margem esquerda caso não seja mais necessária */
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh;
+    margin-left: 0; 
     padding: 20px;
+    background-color: #e7dddd;
 }
 
-/* Estilo para itens do carrinho */
 .cart-item {
     display: flex;
     align-items: center;
@@ -51,7 +52,7 @@ main {
 
 
 #total {
-    text-align: center; /* Centraliza o texto do total */
+    text-align: center;
     width: 100%
 }
 
@@ -79,7 +80,7 @@ main {
     margin-top: 20px;
 }
 
-/* Estilo para a navbar */
+
 #sidebar {
     display: flex;
     flex-direction: column;
