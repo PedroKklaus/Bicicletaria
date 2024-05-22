@@ -80,19 +80,28 @@
     </nav>
     <main>
       <h1>Carrinho</h1>
-      <div id="emptyCart"></div>
-      <ul id="cartList"></ul>
+      <table id="cartTable">
+          <thead>
+              <tr>
+                  <th>Produto</th>
+                  
+              </tr>
+          </thead>
+          <tbody id="cartList">
+              <!-- Os itens do carrinho serão inseridos aqui -->
+          </tbody>
+      </table>
       <div id="total"></div>
-      <label for="paymentLabel" id="paymentLabel">Forma de pagamento:</label>
+      <label for="paymentSelect" id="paymentLabel">Forma de pagamento:</label>
       <select id="paymentSelect">
-        <option value="Cartão de Crédito">Cartão de Crédito</option>
-        <option value="PIX">PIX</option>
-        <option value="Cartao de Débito">Cartão de débito</option>
+          <option value="Cartão de Crédito">Cartão de Crédito</option>
+          <option value="PIX">PIX</option>
+          <option value="Cartao de Débito">Cartão de débito</option>
       </select>
       <div id="checkoutButtonContainer">
-        <button id="checkoutButton">Finalizar Compra</button>
+          <button id="checkoutButton">Finalizar Compra</button>
       </div>
-    </main>
+  </main>
     <script src="script.js"></script>
   </body>
 </html>

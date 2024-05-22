@@ -9,13 +9,17 @@ body {
     background-color: rgba(128, 128, 128, 0.021);
 }
 
-
-
 main {
-    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha horizontalmente ao centro */
+    justify-content: center; /* Alinha verticalmente ao centro */
+    min-height: 100vh; /* Altura mínima para que a verticalidade tenha efeito */
+    margin-left: 0; /* Remove a margem esquerda caso não seja mais necessária */
+    padding: 20px;
 }
 
-
+/* Estilo para itens do carrinho */
 .cart-item {
     display: flex;
     align-items: center;
@@ -23,7 +27,6 @@ main {
     padding: 10px;
     margin-bottom: 10px;
 }
-
 
 .cart-item img {
     width: 90px;
@@ -40,7 +43,6 @@ main {
 
 .cart-item .fa-trash {
     color: #ff0000;
-    border: none;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
@@ -49,9 +51,8 @@ main {
 
 
 #total {
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    text-align: center; /* Centraliza o texto do total */
+    width: 100%
 }
 
 #paymentSelect {
@@ -65,37 +66,30 @@ main {
 #checkoutButton {
     border-radius: 20px;
     text-align: center;
-
     height: 40px;
     width: 150px;
-    
     background-color:#2e7d32d8;
     color: #ffff;
 }
 
 #checkoutButtonContainer {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    margin-top: 10px;
- 
+    margin-top: 20px;
 }
 
-
-
-/* navbar*/
+/* Estilo para a navbar */
 #sidebar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #ffff;
+    background-color: #ffffff;
     height: 100vh;
     position: fixed;
-    right: 0; 
-    left: auto; 
-    margin-right: 8px; 
-   
+    right: 0;
+    left: auto;
+    margin-right: 8px;
     border-radius: 18px 0px 0px 18px;
     transition: all .5s;
     min-width: 82px;
@@ -115,7 +109,7 @@ main {
 }
 
 .side-item.active {
-    background-color: rg#2e7d32d8;
+    background-color: #2e7d32d8;
 }
 
 .side-item {
@@ -138,14 +132,6 @@ main {
 
 .side-item.active a {
     color: #e3e9f7;
-}
-
-.side-item.active a i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
 }
 
 #content {
@@ -191,7 +177,7 @@ main {
     color: black;
 }
 
-#logout-btn a{
+#logout-btn a {
     text-decoration: none;
     color: black;
 }

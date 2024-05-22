@@ -1,110 +1,110 @@
-document.getElementById('open-btn').addEventListener('click', function(){
-    document.getElementById('sidebar').classList.toggle('open-sidebar'); 
+// Evento para alternar a visibilidade da sidebar
+document.getElementById('open-btn').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('open-sidebar'); 
 });
 
+// Inicialização de variáveis para armazenar produtos e carrinho do localStorage
 let products = JSON.parse(localStorage.getItem('products')) || [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+// Elementos da UI que podem ser alterados
 let total = 0;
 let cartList = document.getElementById('cartList');
 
+// Atualiza a visibilidade de elementos relacionados ao pagamento e carrinho vazio
 if (cart.length > 0) {
-    document.getElementById('paymentSelect').style.display = 'block';
-  } else {
-    document.getElementById('emptyCart').textContent = 'Sem itens no carrinho'
-    document.getElementById('paymentSelect').style.display = 'none';
-    document.getElementById('checkoutButton').style.display = 'none';
-    document.getElementById('paymentLabel').style.display = 'none';
-  }
-  
-  document.getElementById('paymentSelect').addEventListener('change', function() {
-    let paymentSelect = this.value;
-    localStorage.setItem('paymentSelect', paymentSelect);
-  });
-  
- 
-let paymentSelected = localStorage.getItem('paymentSelect');
-  if (paymentSelected) {
-      document.getElementById('paymentSelect').value = paymentSelected;
-  }
+  document.getElementById('paymentSelect').style.display = 'block';
+} else {
+  document.getElementById('emptyCart').textContent = 'Sem itens no carrinho';
+  document.getElementById('paymentSelect').style.display = 'none';
+  document.getElementById('checkoutButton').style.display = 'none';
+  document.getElementById('paymentLabel').style.display = 'none';
+}
 
-
-
-
-cart.forEach(function(index) {
-    let product = products[index];
-
-    let li = document.createElement('li');
-    li.className = 'cart-item';
-
-    let img = document.createElement('img');
-    img.src = product.image;
-    img.width = 90;
-
-    let productInfo = document.createElement('div');
-    productInfo.className = 'product-info';
-
-  
-    let descriptionDiv = document.createElement('div');
-    descriptionDiv.textContent = product.description;
-
-   
-    let priceDiv = document.createElement('div');
-    priceDiv.className = "priceDiv"
-    priceDiv.textContent = 'R$' + product.sellprice;
-
-   
-    productInfo.appendChild(descriptionDiv);
-    productInfo.appendChild(priceDiv);
-
-    let removeButton = document.createElement('button');
-    removeButton.className = 'fa-solid fa-trash';
-    removeButton.onclick = function() {
-        cart.splice(cart.indexOf(index), 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        cartList.removeChild(li);
-        location.reload();
-    };
-
-    li.appendChild(img);
-    li.appendChild(productInfo);
-    li.appendChild(removeButton);
-
-    cartList.appendChild(li);
-
-    total += parseFloat(product.sellprice);
-    let finalPricee = document.getElementById("total");
-    finalPricee.textContent = 'Total: R$' + total;
+// Salva a forma de pagamento selecionada no localStorage
+document.getElementById('paymentSelect').addEventListener('change', function() {
+  let paymentSelect = this.value;
+  localStorage.setItem('paymentSelect', paymentSelect);
 });
 
+// Se houver uma forma de pagamento selecionada salva, restaura essa seleção
+let paymentSelected = localStorage.getItem('paymentSelect');
+if (paymentSelected) {
+  document.getElementById('paymentSelect').value = paymentSelected;
+}
 
+// Criação da lista de produtos no carrinho
+cart.forEach(function(index) {
+  let product = products[index];
+  if (!product) return;  // Confere se o produto existe para evitar erros
+
+  let li = document.createElement('li');
+  li.className = 'cart-item';
+
+  let img = document.createElement('img');
+  img.src = product.image;
+
+  let productInfo = document.createElement('div');
+  productInfo.className = 'product-info';
+
+  let descriptionDiv = document.createElement('div');
+  descriptionDiv.textContent = product.description;
+
+  let priceDiv = document.createElement('div');
+  priceDiv.className = "priceDiv";
+  priceDiv.textContent = 'R$' + product.sellprice;
+
+  productInfo.appendChild(descriptionDiv);
+  productInfo.appendChild(priceDiv);
+
+  let removeButton = document.createElement('button');
+  removeButton.className = 'fa-solid fa-trash';
+  removeButton.onclick = function() {
+      cart.splice(cart.indexOf(index), 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      cartList.removeChild(li);
+      location.reload();
+  };
+
+  li.appendChild(img);
+  li.appendChild(productInfo);
+  li.appendChild(removeButton);
+
+  cartList.appendChild(li);
+
+  total += parseFloat(product.sellprice);
+  let finalPrice = document.getElementById("total");
+  finalPrice.textContent = 'Total: R$' + total.toFixed(2);
+});
+
+// Processo de checkout e limpeza do carrinho
 document.getElementById('checkoutButton').onclick = function() {
-    let sales = JSON.parse(localStorage.getItem('sales')) || [];
+  let sales = JSON.parse(localStorage.getItem('sales')) || [];
 
-    cart.forEach(function(index) {
-        let product = products[index];
-        let sale = {
-            product: product.description,
-            category: product.category, 
-            payment: document.getElementById('paymentSelect').value, 
-            date: new Date()
-        };
-        sales.push(sale);
-    });
+  cart.forEach(function(index) {
+      let product = products[index];
+      let sale = {
+          product: product.description,
+          category: product.category,
+          payment: document.getElementById('paymentSelect').value,
+          date: new Date()
+      };
+      sales.push(sale);
+  });
 
-    localStorage.setItem('sales', JSON.stringify(sales));
-    localStorage.removeItem('cart');
-    alert('Compra finalizada!');
-    location.reload();  
+  localStorage.setItem('sales', JSON.stringify(sales));
+  localStorage.removeItem('cart');
+  alert('Compra finalizada!');
+  location.reload();  
 };
 
-
+// Esconde elementos da UI para usuários não logados
 document.addEventListener('DOMContentLoaded', function () {
-  var isLoggedIn = localStorage.getItem('loggedIn');
-  if (isLoggedIn === 'true') {
-      document.getElementById ('order').style.display = 'none';
-      document.getElementById ('sales').style.display = 'none';
-      document.getElementById ('dashboard').style.display = 'none';
-      document.getElementById ('addProduct').style.display = 'none';
-  }
+var isLoggedIn = localStorage.getItem('loggedIn');
+if (isLoggedIn !== 'true') {
+    document.getElementById('order').style.display = 'none';
+    document.getElementById('sales').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('addProduct').style.display = 'none';
+}
 });
