@@ -3,15 +3,12 @@ document.getElementById('open-btn').addEventListener('click', function() {
   document.getElementById('sidebar').classList.toggle('open-sidebar'); 
 });
 
-// Inicialização de variáveis para armazenar produtos e carrinho do localStorage
 let products = JSON.parse(localStorage.getItem('products')) || [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Elementos da UI que podem ser alterados
 let total = 0;
 let cartList = document.getElementById('cartList');
 
-// Atualiza a visibilidade de elementos relacionados ao pagamento e carrinho vazio
 if (cart.length > 0) {
   document.getElementById('paymentSelect').style.display = 'block';
 } else {
@@ -21,22 +18,20 @@ if (cart.length > 0) {
   document.getElementById('paymentLabel').style.display = 'none';
 }
 
-// Salva a forma de pagamento selecionada no localStorage
 document.getElementById('paymentSelect').addEventListener('change', function() {
   let paymentSelect = this.value;
   localStorage.setItem('paymentSelect', paymentSelect);
 });
 
-// Se houver uma forma de pagamento selecionada salva, restaura essa seleção
 let paymentSelected = localStorage.getItem('paymentSelect');
 if (paymentSelected) {
   document.getElementById('paymentSelect').value = paymentSelected;
 }
 
-// Criação da lista de produtos no carrinho
+
 cart.forEach(function(index) {
   let product = products[index];
-  if (!product) return;  // Confere se o produto existe para evitar erros
+  if (!product) return; 
 
   let li = document.createElement('li');
   li.className = 'cart-item';
@@ -77,7 +72,6 @@ cart.forEach(function(index) {
   finalPrice.textContent = 'Total: R$' + total.toFixed(2);
 });
 
-// Processo de checkout e limpeza do carrinho
 document.getElementById('checkoutButton').onclick = function() {
   let sales = JSON.parse(localStorage.getItem('sales')) || [];
 
@@ -98,7 +92,6 @@ document.getElementById('checkoutButton').onclick = function() {
   location.reload();  
 };
 
-// Esconde elementos da UI para usuários não logados
 document.addEventListener('DOMContentLoaded', function () {
 var isLoggedIn = localStorage.getItem('loggedIn');
 if (isLoggedIn !== 'true') {

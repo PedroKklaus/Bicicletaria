@@ -45,19 +45,19 @@ window.addEventListener('load', updateTable);
 
 
 const saveOrder = () => {
-    const service = document.getElementById('service').value;
+    const servico = document.getElementById('servico').value;
     const description = document.getElementById ('description').value
-    const initialDate = document.getElementById('initialDate').value;
-    const finalDate = document.getElementById('finalDate').value;
-    const clientContact = document.getElementById('clientContact').value;
+    const datainicial = document.getElementById('datainicial').value;
+    const dataFinal = document.getElementById('dataFinal').value;
+    const ContatoCliente = document.getElementById('ContatoCliente').value;
     const paymentSelect = document.getElementById('paymentSelect').value;
 
     const newOrder = {
-        service,
+        servico,
         description,
-        initialDate,
-        finalDate,
-        clientContact,
+        datainicial,
+        dataFinal,
+        ContatoCliente,
         paymentSelect
     };
 
@@ -77,11 +77,11 @@ const editOrder = (index) => {
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const order = orders[index];
 
-    document.getElementById('service').value = order.service;
+    document.getElementById('servico').value = order.servico;
     document.getElementById('description').value = order.description;
-    document.getElementById('initialDate').value = order.initialDate;
-    document.getElementById('finalDate').value = order.finalDate;
-    document.getElementById('clientContact').value = order.clientContact;
+    document.getElementById('datainicial').value = order.datainicial;
+    document.getElementById('dataFinal').value = order.dataFinal;
+    document.getElementById('ContatoCliente').value = order.ContatoCliente;
     document.getElementById('paymentSelect').value = order.paymentSelect;
 
     
@@ -90,11 +90,11 @@ const editOrder = (index) => {
 
    
     saveButton.addEventListener('click', () => {
-        order.service = document.getElementById('service').value;
+        order.servico = document.getElementById('servico').value;
         order.description = document.getElementById('description').value;
-        order.initialDate = document.getElementById('initialDate').value;
-        order.finalDate = document.getElementById('finalDate').value;
-        order.clientContact = document.getElementById('clientContact').value;
+        order.datainicial = document.getElementById('datainicial').value;
+        order.dataFinal = document.getElementById('dataFinal').value;
+        order.ContatoCliente = document.getElementById('ContatoCliente').value;
         order.paymentSelect = document.getElementById('paymentSelect').value;
 
     

@@ -8,7 +8,7 @@ let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 
 
-let categoryCount = sales.reduce((count, sale) => {
+let categoriaCount = sales.reduce((count, sale) => {
   if (!count[sale.category]) {
     count[sale.category] = 0;
   }
@@ -16,8 +16,8 @@ let categoryCount = sales.reduce((count, sale) => {
   return count;
 }, {});
 
-let categories = Object.keys(categoryCount);
-let counts = Object.values(categoryCount);
+let categories = Object.keys(categoriaCount);
+let counts = Object.values(categoriaCount);
 let category = document.getElementById ('category');
 category.textContent = counts.length;
 
