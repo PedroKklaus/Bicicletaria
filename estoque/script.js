@@ -30,7 +30,7 @@ sales.forEach(function (sale) {
 
 
   let tdVendedor = document.createElement("td");
-  tdVendedor.textContent = 'Cláudiao'
+  tdVendedor.textContent = 'Pedro'
   tr.appendChild(tdVendedor);
 
   salesTable.appendChild(tr);
